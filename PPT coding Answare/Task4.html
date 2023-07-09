@@ -1,0 +1,114 @@
+<!--4. Build a responsive Navbar, on smaller screens it should be a hamburger menu which on click should reveal the menu items nicely, and on larger screens they should be displayed directly on the screen.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar .icon {
+      display: none;
+    }
+
+    .navbar .dropdown {
+      float: right;
+      overflow: hidden;
+    }
+
+    .navbar .dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .navbar .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .navbar a:not(:first-child), .navbar .dropdown .dropdown-content {
+        display: none;
+      }
+
+      .navbar a.icon {
+        float: right;
+        display: block;
+      }
+
+      .navbar.responsive {
+        position: relative;
+      }
+
+      .navbar.responsive .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .navbar.responsive .dropdown {
+        float: none;
+      }
+
+      .navbar.responsive .dropdown-content {
+        position: static;
+      }
+    }
+  </style>
+<body>
+    <div class="navbar" id="myNavbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <div class="dropdown">
+          <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a>
+          <div class="dropdown-content">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        function toggleMenu() {
+          const navbar = document.getElementById("myNavbar");
+          if (navbar.className === "navbar") {
+            navbar.className += " responsive";
+          } else {
+            navbar.className = "navbar";
+          }
+        }
+      </script>
+    </body>  
+</body>
+</html>
